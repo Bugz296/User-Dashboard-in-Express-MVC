@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title><%= html.title %></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Jeffrey Carl">
+
+		<link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="/assets/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/assets/css/style.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+<%			if(typeof userdata != 'undefined' && userdata.isLoggedin){ %>
+					<a href="" class="brand" >Test App</a>
+					<ul class="nav">
+						<li><a href="/dashboard">Dashboard</a></li>
+						<li><a href="/users/edit"><%= userdata.firstname+" "+userdata.lastname %></a></li>
+					</ul>
+					<a href="/users/signout_user" class="btn pull-right">Sign out</a>
+<%			}else{ %>
+					<a href="" class="brand" >Test App</a>
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+					</ul>
+					<a href="/users/signin" class="btn pull-right">Sign in</a>
+<%			} %>
+				</div>
+			</div>
+		</div>
+<%
+        if(typeof msg != 'undefined'){ %>
+            <script>
+                $(document).ready(function(){
+                    $("#messages").fadeIn(2000);
+                    $("#messages").fadeOut(2000);
+                });
+            </script>
+		<div class="container msg" id="messages">
+			<div class="<%= msg[1] %>">
+				<strong><%= msg[0] %></strong>
+			</div>
+		</div>
+<%      } %>

@@ -1,0 +1,14 @@
+<%- include('../partials/navbar') %>
+        <div class="container first">
+			<h3>Delete User ID: <%= del_user_data[0].id %></h3>
+			<h3>Are you sure you want to delete this user?</h3>
+            <form action="/users/delete_user/<%= del_user_data[0].id %>" method="post">
+                <input type="hidden" name="action" value="<%= del_user_data[0].id %>">
+                <h5>Email Address: <%= del_user_data[0].email %></h5>
+                <h5>Name: <%= del_user_data[0].first_name+" "+del_user_data[0].last_name %></h5>
+                <a href="/home" class="btn btn-info">No</a>
+                <input type="submit" value="Yes, I want to delete it." class="btn btn-danger">
+            </form>
+		</div>
+	</body>
+</html>
